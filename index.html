@@ -437,7 +437,7 @@
             orders.push(order);
 
             const message = `*طلب جديد من Candy Zoy*\n\nالاسم: ${name}\nالعنوان: ${address}\n\n${cart.map(item => `${item.name} × ${item.quantity} = ${(item.price * item.quantity).toFixed(2)} ج.د`).join('\n')}\n\n*الإجمالي: ${total.toFixed(2)} ج.د*\nطريقة الدفع: ${payment === 'cod' ? 'الدفع عند الاستلام' : 'PayPal'}`;
-            const whatsappUrl = `https://wa.me/962797644580?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/962792116118?text=${encodeURIComponent(message)}`;
             
             alert('✅ تم استلام طلبك! سيتم الاتصال بك قريباً');
             window.open(whatsappUrl, '_blank');
