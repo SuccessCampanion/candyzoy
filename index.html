@@ -135,7 +135,6 @@
             <div class="nav-items">
                 <a href="#" onclick="showStore()"><i class="fas fa-store"></i> المتجر</a>
                 <button onclick="toggleCart()"><i class="fas fa-shopping-cart"></i> <span class="badge" id="cartCount">0</span></button>
-                <button onclick="showAdmin()"><i class="fas fa-cog"></i> لوحة التحكم</button>
                 <button onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
             </div>
         </nav>
@@ -450,11 +449,16 @@
         }
 
         function showAdmin() {
-            const adminPanel = document.getElementById('adminPanel');
-            adminPanel.classList.toggle('active');
-            if (adminPanel.classList.contains('active')) {
-                updateOrdersList();
-                updateDashboard();
+            const password = prompt('أدخل كلمة السر لدخول لوحة التحكم:');
+            if (password === 'admin123') {
+                const adminPanel = document.getElementById('adminPanel');
+                adminPanel.classList.toggle('active');
+                if (adminPanel.classList.contains('active')) {
+                    updateOrdersList();
+                    updateDashboard();
+                }
+            } else if (password !== null) {
+                alert('❌ كلمة السر خاطئة!');
             }
         }
 
@@ -520,6 +524,14 @@
             document.body.classList.toggle('dark-mode');
             localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
         }
+
+        // Keyboard shortcut for admin (Ctrl + Shift + A)
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.shiftKey && event.key === 'A') {
+                event.preventDefault();
+                showAdmin();
+            }
+        });
 
         // Initialize
         if (localStorage.getItem('theme') === 'dark') {
